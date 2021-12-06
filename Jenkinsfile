@@ -1,7 +1,9 @@
+def groovy
+
 pipeline {
 	agent any
 
-/*	tools {
+	/*tools {
 		//either in this 3, depends on the project
 		maven
 		jdk
@@ -13,13 +15,24 @@ pipeline {
 		booleanParam(name: 'executeTest', defaultValue: true, description: '')
 	}
 	stages {
-		stage("Build") {
+		//Initialization of imports ex.(groovy script)
+		stage("Initialize") {
 			steps {
-				echo "Building.."
-				echo "Hello world"
+				script {
+					groovy = load "script.groovy"
+				}	
 			}
 		}
 
+		//Build Stage
+		stage("Build") {
+			steps {
+				script {
+					groovy.buildApp()
+				}
+			}
+		}
+		//Testing Stage
 		stage("Test") {
 			when {
 				expression {
@@ -27,14 +40,17 @@ pipeline {
 				}
 			}
 			steps {
-				echo "Testing.."
+				script {
+					groovy.testApp()
+				}	
 			}
 		}
-
+		//Deployment Stage
 		stage("Deploy") {
 			steps {
-				echo "Deploying.."
-				echo "deploying version ${params.VERSION}"
+				script {
+					groovy.deployApp()
+				}	
 			}
 		}
 	}
