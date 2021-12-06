@@ -1,12 +1,12 @@
 pipeline {
 	agent any
 
-	tools {
+/*	tools {
 		//either in this 3, depends on the project
 		maven
 		jdk
 		gradle
-	}
+	}*/
 
 	parameters {
 		choice(name: 'VERSION', choices: ['1.1.0','1.2.0','1.3.0'], description: '')
