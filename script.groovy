@@ -1,6 +1,7 @@
 def buildApp() {
 	echo "Building.."
 	echo "Hello world"
+	// Build tools code here
 }
 
 def testApp() {
