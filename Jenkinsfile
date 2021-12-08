@@ -42,7 +42,6 @@ pipeline {
 			}
 			steps {
 				script {
-					build job: 'DemoProject'
 					groovy.testApp()
 				}	
 			}
