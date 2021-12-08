@@ -30,7 +30,7 @@ pipeline {
 				script {
 					groovy.buildApp()
 				}
-				sh "mvn install"
+				sh 'mvn install'
 			}
 		}
 		//Testing Stage
